@@ -178,7 +178,7 @@ caine = Actor.find_by({"name" => "Michael Caine"})
 neeson = Actor.find_by({"name" => "Liam Neeson"})
 holmes = Actor.find_by({"name" => "Katie Holmes"})
 oldman = Actor.find_by({"name" => "Gary Oldman"})
-ledger = Actor.find_by({"name" => "Health Ledger"})
+ledger = Actor.find_by({"name" => "Heath Ledger"})
 eckhart = Actor.find_by({"name" => "Aaron Eckhart"})
 gyllenhaal = Actor.find_by({"name" => "Maggie Gyllenhaal"})
 hardy = Actor.find_by({"name" => "Tom Hardy"})
@@ -276,7 +276,7 @@ new_role["actor_id"] = hathaway["id"]
 new_role["character_name"] = "Selina Kyle"
 new_role.save
 
-
+puts "roles: #{Role.all.count}"
 
 # Prints a header for the movies output
 puts "Movies"
@@ -285,6 +285,8 @@ puts ""
 
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
+
+
 
 # Prints a header for the cast output
 puts ""
