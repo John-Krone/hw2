@@ -84,15 +84,15 @@ Role.destroy_all
 # Do not use hard-coded foreign key IDs.
 # TODO!
 
-puts "studios: #{Studio.all.count}"
+#puts "studios: #{Studio.all.count}"
 
 new_studio = Studio.new
 new_studio["name"] = "Warner Bros."
 new_studio.save
 
-puts "studios: #{Studio.all.count}"
+#puts "studios: #{Studio.all.count}"
 
-puts "movies: #{Movie.all.count}"
+#puts "movies: #{Movie.all.count}"
 
 warner = Studio.find_by({"name" => "Warner Bros."})
 
@@ -117,9 +117,9 @@ new_movie["rated"] = "PG-13"
 new_movie["studio_id"] = warner["id"]
 new_movie.save
 
-puts "movies: #{Movie.all.count}"
+#puts "movies: #{Movie.all.count}"
 
-puts "actors: #{Actor.all.count}"
+#puts "actors: #{Actor.all.count}"
 
 new_actor = Actor.new
 new_actor["name"] = "Christian Bale"
@@ -165,9 +165,9 @@ new_actor = Actor.new
 new_actor["name"] = "Anne Hathaway"
 new_actor.save
 
-puts "actors: #{Actor.all.count}"
+#puts "actors: #{Actor.all.count}"
 
-puts "roles: #{Role.all.count}"
+#puts "roles: #{Role.all.count}"
 
 batman = Movie.find_by({"title" => "Batman Begins"})
 knight = Movie.find_by({"title" => "The Dark Knight"})
@@ -276,7 +276,7 @@ new_role["actor_id"] = hathaway["id"]
 new_role["character_name"] = "Selina Kyle"
 new_role.save
 
-puts "roles: #{Role.all.count}"
+#puts "roles: #{Role.all.count}"
 
 # Prints a header for the movies output
 puts "Movies"
@@ -286,7 +286,19 @@ puts ""
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
+moviedata = Movie.all
+studiodata = Studio.all
 
+for movie in moviedata
+    movie_title = movie["title"]
+    movie_year = movie["year_released"]
+    movie_rate = movie["rated"]
+   
+    studio = studiodata.find { |studio| studio["id"] == movie["studio_id"] }
+    studio_name = studio["name"] 
+    
+    puts "#{movie_title} #{movie_year} #{movie_rate} #{studio_name}"
+end
 
 # Prints a header for the cast output
 puts ""
@@ -296,3 +308,19 @@ puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
+
+roledata2 = Role.all
+moviedata2 = Movie.all
+actordata2 = Actor.all
+
+for role in roledata2
+    
+    character = role["character_name"]
+    actor = actordata2.find { |actor| actor["id"] == role["actor_id"]}
+    actor_name = actor["name"]
+
+    movie = moviedata2.find { |movie| movie["id"] == role["movie_id"] }
+    movie_name = movie["name"] 
+
+    puts "#{movie_name}    #{actor_name}    #{character}"
+end
