@@ -320,7 +320,7 @@ for role in roledata2
     actor_name = actor["name"]
 
     movie = moviedata2.find { |movie| movie["id"] == role["movie_id"] }
-    movie_name = movie["name"] 
+    movie_name = movie["title"] 
 
     puts "#{movie_name}    #{actor_name}    #{character}"
 end
