@@ -84,7 +84,7 @@ Role.destroy_all
 # Do not use hard-coded foreign key IDs.
 # TODO!
 
-
+puts "studios: #{Studio.all.count}"
 
 # Prints a header for the movies output
 puts "Movies"
